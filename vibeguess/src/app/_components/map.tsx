@@ -55,19 +55,20 @@ export function MapLocation() {
                 className={`fixed bottom-4 right-4 z-50 transition-all duration-300 border rounded-md shadow-md ${expanded ? 'w-[400px] h-[300px]' : 'w-[200px] h-[150px]'
                     }`}
             >
-                <MapContainer
-                    center={[51.505, -0.09]}
-                    zoom={4}
-                    scrollWheelZoom={true}
-                    className="w-full h-full rounded-md border shadow-md"
-                >                    <TileLayer
-                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    />
-                    <LocationMarker />
-                </MapContainer>
+                <div className={`relative ${expanded ? 'w-[400px] h-[300px]' : 'w-[200px] h-[150px]'}`}>
+
+                    <button className="absolute top-4 right-4 bg-white text-black px-4 py-2 rounded shadow z-10000" onClick={toggleMap}>Toggle Map Size</button>
+                    <MapContainer
+                        center={[51.505, -0.09]}
+                        zoom={4}
+                        scrollWheelZoom={true}
+                        className="w-full h-full rounded-md border shadow-md"
+                    >
+                        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+                        <LocationMarker />
+                    </MapContainer>
+                </div>
             </div>
-            <button className="absolute top-4 right-4 bg-white text-black px-4 py-2 rounded shadow z-10" onClick={toggleMap}>Toggle Map Size</button>
         </div>
     )
 }
