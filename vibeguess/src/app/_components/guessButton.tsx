@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, type Dispatch, type SetStateAction } from "react"
 
 const distanceAway = (lat1: number, lon1: number, lat2: number, lon2: number): number => {
     const R_KM = 6_371;
@@ -38,17 +38,25 @@ const pointCalc = (guess: [number, number] | null, ans: [number, number]) => {
     return points
 }
 
-export default function Guess({ markerPosition, destination }: 
-    { markerPosition: [number, number] | null; destination: [number, number] }) {
+export default function Guess({ markerPosition, destination, setGuess }:
+    {
+        markerPosition: [number, number] | null; destination: [number, number];
+        setGuess: Dispatch<SetStateAction<boolean>>
+    }) {
+
     const [points, setPoints] = useState(0)
     console.log('Points: ', points);
-    const clickGuess =  () => {
+    const clickGuess = () => {
         console.log('Pos: ', markerPosition)
         setPoints(pointCalc(markerPosition, destination))
+        setGuess((guess) => !guess)
 
 
     }
     if (!markerPosition) {
+        return
+    }
+    if (points > 0) {
         return
     }
     return (
