@@ -5,6 +5,7 @@ import { useState } from 'react'
 
 import L from 'leaflet'
 import { number } from 'zod'
+import Guess from './guessButton'
 
 export default function MapLocation() {
     //const position: [number, number] = [51.505, -0.09]
@@ -12,6 +13,8 @@ export default function MapLocation() {
     const [expanded, setExpand] = useState(false)
     const toggleMap = () => setExpand(!expanded)
 
+    //Guess button has on click, calculate - > end and show
+    //Onclick needs marker location and destination location
 
     function LocationMarker() {
         useMapEvents({
@@ -48,7 +51,7 @@ export default function MapLocation() {
             </Marker>
         ) : null
     }
-
+    let expandContent = 'no'
     return (
         <div>
             <div
@@ -56,8 +59,7 @@ export default function MapLocation() {
                     }`}
             >
                 <div className={`relative ${expanded ? 'w-[400px] h-[300px]' : 'w-[200px] h-[150px]'}`}>
-
-                    <button className="absolute top-4 right-4 bg-white text-black px-4 py-2 rounded shadow z-10000" onClick={toggleMap}>Toggle Map Size</button>
+                    <button className="absolute top-4 right-4 bg-white text-black px-2 py-2 rounded shadow z-10000" onClick={toggleMap}>{expanded?expandContent:'lol'}</button>
                     <MapContainer
                         center={[51.505, -0.09]}
                         zoom={4}
@@ -67,6 +69,7 @@ export default function MapLocation() {
                         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
                         <LocationMarker />
                     </MapContainer>
+                    <Guess markerPosition={markerPosition} />
                 </div>
             </div>
         </div>
