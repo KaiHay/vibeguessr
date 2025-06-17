@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { auth } from "~/server/auth";
 import { api, HydrateClient } from "~/trpc/server";
-import { MapLocation } from "./_components/map";
+import  Map  from "./_components/map";
 import { PLACES } from "./api/imageGen/place";
 
 export default async function Home() {
@@ -20,7 +20,7 @@ export default async function Home() {
       <div className="">
         <img src={`../image-${place.id}.png`} alt="Generated" className='h-full w-full' />
       </div>
-      <MapLocation />
+      <Map />
     </main>
 
   );
