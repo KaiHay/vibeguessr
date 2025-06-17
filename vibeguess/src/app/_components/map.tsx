@@ -8,6 +8,6 @@ const ClientLeafletMap = dynamic(() => import('./leafMap'), {
     loading: () => <p>Loading map…</p>,
 })
 
-export default function Map() {
-    return <ClientLeafletMap />
+export default function Map({destination}:{destination: [number, number]}) {
+    return <ClientLeafletMap destination={destination}/>
 }
