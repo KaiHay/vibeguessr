@@ -1,8 +1,9 @@
-import Link from "next/link";
+//import Link from "next/link";
 import { auth } from "~/server/auth";
-import { api, HydrateClient } from "~/trpc/server";
-import  Map  from "./_components/map";
+import { api } from "~/trpc/server";
+import Map from "./_components/map";
 import { PLACES } from "./api/imageGen/place";
+import Image from 'next/image'
 
 export default async function Home() {
   const session = await auth();
@@ -12,13 +13,13 @@ export default async function Home() {
     void api.post.getLatest.prefetch();
   }
   const place = PLACES[Math.floor(Math.random() * PLACES.length)]
-  if (!place || !place.id) {
+  if (!place?.id) {
     return <div>lol</div>
   }
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#406e00] to-[#15162c] text-white">
+    <main className="relative flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#406e00] to-[#15162c] text-white">
       <div className="">
-        <img src={`../image-${place.id}.png`} alt="Generated" className='h-full w-full' />
+        <Image src={`/image-${place.id}.png`} alt="Generated" fill className='' />
       </div>
       <Map />
     </main>

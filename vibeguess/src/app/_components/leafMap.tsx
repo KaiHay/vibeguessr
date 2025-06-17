@@ -7,7 +7,7 @@ import L from 'leaflet'
 import { number } from 'zod'
 
 export default function MapLocation() {
-    const position: [number, number] = [51.505, -0.09]
+    //const position: [number, number] = [51.505, -0.09]
     const [markerPosition, setMarkerPosition] = useState<[number, number] | null>(null)
     const [expanded, setExpand] = useState(false)
     const toggleMap = () => setExpand(!expanded)

@@ -12,7 +12,7 @@ for (const place of PLACES) {
         const { image } = await generateImage({
             model: luma.image('photon-flash-1', { maxPollAttempts: 500 }),
             prompt: place.imagePrompt,
-            aspectRatio: '4:3',
+            aspectRatio: '16:9',
         })
 
 
