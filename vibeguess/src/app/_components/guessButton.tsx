@@ -1,5 +1,4 @@
 import { useState } from "react"
-import { PLACES } from "../api/imageGen/place"
 
 const distanceAway = (lat1: number, lon1: number, lat2: number, lon2: number): number => {
     const R_KM = 6_371;
@@ -43,7 +42,7 @@ export default function Guess({ markerPosition, destination }:
     { markerPosition: [number, number] | null; destination: [number, number] }) {
     const [points, setPoints] = useState(0)
     console.log('Points: ', points);
-    const clickGuess = async () => {
+    const clickGuess =  () => {
         console.log('Pos: ', markerPosition)
         setPoints(pointCalc(markerPosition, destination))
 
@@ -59,6 +58,3 @@ export default function Guess({ markerPosition, destination }:
     )
 }
 
-function toRad(arg0: number) {
-    throw new Error("Function not implemented.");
-}

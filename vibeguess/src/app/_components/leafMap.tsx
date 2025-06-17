@@ -4,10 +4,9 @@ import { MapContainer, TileLayer, Marker, useMapEvents, Popup } from 'react-leaf
 import { useState } from 'react'
 
 import L from 'leaflet'
-import { number } from 'zod'
 import Guess from './guessButton'
 
-export default function MapLocation({destination}:{destination: [number, number]}) {
+export default function MapLocation({ destination }: { destination: [number, number] }) {
     //const position: [number, number] = [51.505, -0.09]
     const [markerPosition, setMarkerPosition] = useState<[number, number] | null>(null)
     const [expanded, setExpand] = useState(false)
@@ -51,15 +50,15 @@ export default function MapLocation({destination}:{destination: [number, number]
             </Marker>
         ) : null
     }
-    let expandContent = 'no'
+    const expandContent = 'no'
     return (
         <div>
             <div
-                className={`fixed bottom-4 right-4 z-50 transition-all duration-300 border rounded-md shadow-md ${expanded ? 'w-[400px] h-[300px]' : 'w-[200px] h-[150px]'
+                className={`fixed bottom-4 right-4 z-50 transition-all duration-300 border rounded-md shadow-md ${expanded ? 'w-[600px] h-[400px]' : 'w-[200px] h-[150px]'
                     }`}
             >
-                <div className={`relative ${expanded ? 'w-[400px] h-[300px]' : 'w-[200px] h-[150px]'}`}>
-                    <button className="absolute top-4 right-4 bg-white text-black px-2 py-2 rounded shadow z-10000" onClick={toggleMap}>{expanded?expandContent:'lol'}</button>
+                <div className={`relative ${expanded ? 'w-[600px] h-[400px]' : 'w-[200px] h-[150px]'}`}>
+                    <button className="absolute top-4 right-4 bg-white text-black px-2 py-2 rounded shadow z-10000" onClick={toggleMap}>{expanded ? expandContent : 'lol'}</button>
                     <MapContainer
                         center={[51.505, -0.09]}
                         zoom={4}
@@ -69,7 +68,7 @@ export default function MapLocation({destination}:{destination: [number, number]
                         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
                         <LocationMarker />
                     </MapContainer>
-                    <Guess markerPosition={markerPosition} destination={destination}/>
+                    <Guess markerPosition={markerPosition} destination={destination} />
                 </div>
             </div>
         </div>
