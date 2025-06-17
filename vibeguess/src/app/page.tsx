@@ -1,22 +1,29 @@
-import Link from "next/link";
-
-import { LatestPost } from "~/app/_components/post";
+//import Link from "next/link";
 import { auth } from "~/server/auth";
-import { api, HydrateClient } from "~/trpc/server";
-import { MapLocation } from "./_components/map";
+import { api } from "~/trpc/server";
+import Map from "./_components/map";
+import { PLACES } from "./api/imageGen/place";
+import Image from 'next/image'
 
 export default async function Home() {
-  const hello = await api.post.hello({ text: "from tRPC" });
   const session = await auth();
+  console.log(session?.user);
 
   if (session?.user) {
     void api.post.getLatest.prefetch();
   }
+  const place = PLACES[Math.floor(Math.random() * PLACES.length)]
+  if (!place?.id) {
+    return <div>lol</div>
+  }
+
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#406e00] to-[#15162c] text-white">
-
-      <MapLocation />
+    <main className="relative flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#406e00] to-[#15162c] text-white">
+      <div className="">
+        <Image src={`/image-${place.id}.png`} alt="Generated" fill className='' />
+      </div>
+      <Map destination={[place.lat, place.lng]}/>
     </main>
 
   );
