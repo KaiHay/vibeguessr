@@ -7,7 +7,7 @@ import L from 'leaflet'
 import { number } from 'zod'
 import Guess from './guessButton'
 
-export default function MapLocation() {
+export default function MapLocation({destination}:{destination: [number, number]}) {
     //const position: [number, number] = [51.505, -0.09]
     const [markerPosition, setMarkerPosition] = useState<[number, number] | null>(null)
     const [expanded, setExpand] = useState(false)
@@ -69,7 +69,7 @@ export default function MapLocation() {
                         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
                         <LocationMarker />
                     </MapContainer>
-                    <Guess markerPosition={markerPosition} />
+                    <Guess markerPosition={markerPosition} destination={destination}/>
                 </div>
             </div>
         </div>

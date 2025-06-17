@@ -17,13 +17,13 @@ export default async function Home() {
     return <div>lol</div>
   }
 
-  
+
   return (
     <main className="relative flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#406e00] to-[#15162c] text-white">
       <div className="">
         <Image src={`/image-${place.id}.png`} alt="Generated" fill className='' />
       </div>
-      <Map />
+      <Map destination={[place.lat, place.lng]}/>
     </main>
 
   );
