@@ -59,4 +59,125 @@ export const PLACES = [
         biome: 'arctic_fjord',
         difficulty: 3,
     },
+    {
+        id: 'meteora',
+        name: 'Meteora Monasteries, Greece',
+        description:
+            'Ancient cliff-top monasteries perched on giant sandstone pillars above a rolling green valley.',
+        lat: 39.715,
+        lng: 21.631,
+        imagePrompt:
+            'Realistic photo from a high sandstone pillar showing stone monastery atop a neighboring tower, hazy valley and winding river below, late-afternoon sun. Style like google street view; no location text in image',
+        biome: 'rocky_cliff',
+        difficulty: 3,
+    },
+    {
+        id: 'louise',
+        name: 'Lake Louise, Banff NP, Canada',
+        description:
+            'Turquoise glacial lake rimmed by dense spruce forest and sheer ice-capped peaks.',
+        lat: 51.416,
+        lng: -116.212,
+        imagePrompt:
+            'Realistic photo beside vivid turquoise alpine lake with canoe dock, conifer forests and snow-patched crags reflecting in still water, soft morning haze. Style like google street view; no words in image',
+        biome: 'alpine_lake',
+        difficulty: 2,
+    },
+    {
+        id: 'palawan',
+        name: 'El Nido Limestone Cliffs, Palawan, Philippines',
+        description:
+            'Karst spires rising from emerald waters dotted with white-sand coves and jungle-topped islands.',
+        lat: 11.181,
+        lng: 119.391,
+        imagePrompt:
+            'Realistic photo from a boat in crystal-clear lagoon ringed by jagged limestone cliffs covered in lush vines, bright tropical sky. Style like google street view; no text in image',
+        biome: 'karst_island',
+        difficulty: 4,
+    },
+    {
+        id: 'bolaven',
+        name: 'Bolaven Plateau Waterfalls, Laos',
+        description:
+            'Twin tropical waterfalls plunging into a misty gorge edged by dense rainforest.',
+        lat: 15.107,
+        lng: 106.852,
+        imagePrompt:
+            'Realistic photo from jungle overlook showing twin cascades pouring into deep ravine, mossy rocks and broad-leafed plants in foreground, humid atmosphere. Style like google street view; no place words',
+        biome: 'rainforest_falls',
+        difficulty: 3,
+    },
+    {
+        id: 'sossus',
+        name: 'Deadvlei, Sossusvlei, Namibia',
+        description:
+            'Bleached clay pan with black skeletal camel-thorn trees set against towering red dunes.',
+        lat: -24.739,
+        lng: 15.315,
+        imagePrompt:
+            'Realistic photo of stark white clay flat with dark dead trees casting sharp shadows, immense red dune wall under deep blue sky. Style like google street view; no location text',
+        biome: 'salt_pan',
+        difficulty: 4,
+    },
+    {
+        id: 'perito',
+        name: 'Perito Moreno Glacier, Patagonia, Argentina',
+        description:
+            'Massive blue-white glacier wall calving into a milky turquoise lake framed by snow-capped Andes.',
+        lat: -50.495,
+        lng: -73.048,
+        imagePrompt:
+            'Realistic photo from boardwalk facing towering serrated ice wall meeting cloudy teal water, distant jagged peaks under cold sunlight. Style google street view; no words',
+        biome: 'glacier_lake',
+        difficulty: 3,
+    },
+    {
+        id: 'pamukkale',
+        name: 'Pamukkale Travertine Terraces, Türkiye',
+        description:
+            'Snow-white calcium pools cascading down a hillside, filled with aquamarine thermal water.',
+        lat: 37.925,
+        lng: 29.124,
+        imagePrompt:
+            'Realistic photo of bright white terraced pools brimming with pale blue mineral water, distant farmlands under hazy sunset. Style like google street view; omit location words',
+        biome: 'travertine_terrace',
+        difficulty: 2,
+    },
+    {
+        id: 'lençois',
+        name: 'Lençóis Maranhenses Dunes, Brazil',
+        description:
+            'Sweeping cream-colored dunes pocketed with rainwater lagoons that glow sapphire in the sun.',
+        lat: -2.523,
+        lng: -43.115,
+        imagePrompt:
+            'Realistic photo looking across undulating pale dunes with bright blue freshwater lagoon in middle ground, thin clouds in deep sky. Google street view style; no identifying text',
+        biome: 'coastal_dune',
+        difficulty: 4,
+    },
+    {
+        id: 'uluru',
+        name: 'Uluru (Ayers Rock), Australia',
+        description:
+            'Gigantic sandstone monolith rising from flat red desert scrub, changing hues at dusk.',
+        lat: -25.345,
+        lng: 131.036,
+        imagePrompt:
+            'Realistic photo of massive red rock formation dominating arid plain with sparse bushes, low sun casting long shadows, clear outback sky. Google street view style; no words shown',
+        biome: 'desert_monolith',
+        difficulty: 3,
+    },
+    {
+        id: 'pliva',
+        name: 'Pliva Watermills, Bosnia and Herzegovina',
+        description:
+            'Cluster of rustic wooden watermills straddling emerald streams and miniature waterfalls in a forest clearing.',
+        lat: 44.349,
+        lng: 17.261,
+        imagePrompt:
+            'Realistic photo at stream level showing old timber watermill huts on stilts over cascading crystal water, mossy banks and leafy trees, dappled sunlight. Street-view style; no text in image',
+        biome: 'riparian_forest',
+        difficulty: 2,
+    }
+
 ] as const
