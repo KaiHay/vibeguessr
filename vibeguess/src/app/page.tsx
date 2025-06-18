@@ -6,12 +6,10 @@ import { PLACES } from "./api/imageGen/place";
 import Image from 'next/image'
 
 export default async function Home() {
-  const session = await auth();
-  console.log(session?.user);
+  const session = await auth().then((poo) => console.log(poo));
+  console.log('lol: ',session);
 
-  if (session?.user) {
-    void api.post.getLatest.prefetch();
-  }
+
   const place = PLACES[Math.floor(Math.random() * PLACES.length)]
   if (!place?.id) {
     return <div>lol</div>
@@ -23,7 +21,7 @@ export default async function Home() {
       <div className="">
         <Image src={`/image-${place.id}.png`} alt="Generated" fill className='' />
       </div>
-      <Map destination={[place.lat, place.lng]}/>
+      <Map destination={[place.lat, place.lng]} />
     </main>
 
   );
