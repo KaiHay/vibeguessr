@@ -178,6 +178,127 @@ export const PLACES = [
             'Realistic photo at stream level showing old timber watermill huts on stilts over cascading crystal water, mossy banks and leafy trees, dappled sunlight. Street-view style; no text in image',
         biome: 'riparian_forest',
         difficulty: 2,
+    },
+    {
+        id: 'chefchaouen',
+        name: 'Chefchaouen, Morocco',
+        description:
+            'Labyrinth of blue-washed alleys and stairways hugging a Rif-mountain slope, accented by bright doorways and flower pots.',
+        lat: 35.168,
+        lng: -5.262,
+        imagePrompt:
+            'Realistic street-view style photo in narrow Chefchaouen alley, cobalt walls, painted stairs, colorful flower pots, afternoon dappled light; no location text',
+        biome: 'medina_hill',
+        difficulty: 3,
+    },
+    {
+        id: 'dubrovnik',
+        name: 'Dubrovnik Old Town, Croatia',
+        description:
+            'Medieval limestone lanes within massive sea-battered walls, orange terracotta roofs cascading toward the Adriatic.',
+        lat: 42.640,
+        lng: 18.111,
+        imagePrompt:
+            'Realistic street-view of Dubrovnik walls and limestone street, archways, orange roofs and turquoise sea backdrop; no identifying words',
+        biome: 'walled_coast',
+        difficulty: 3,
+    },
+    {
+        id: 'matera',
+        name: 'Matera Sassi, Italy',
+        description:
+            'Ancient cave dwellings stacked on a ravine cliffside, honey-colored stone lit by warm southern sun.',
+        lat: 40.667,
+        lng: 16.606,
+        imagePrompt:
+            'High-realism photo overlooking Matera cave houses, rock-hewn facades, winding alleys, golden hour tones; google street-view style, no text',
+        biome: 'cave_city',
+        difficulty: 3,
+    },
+    {
+        id: 'colmar',
+        name: 'Colmar, Alsace, France',
+        description:
+            'Fairytale timber-frame houses lining a quiet canal with geranium-filled window boxes and cobbled quays.',
+        lat: 48.080,
+        lng: 7.355,
+        imagePrompt:
+            'Realistic street-view photo along Colmar canal, half-timbered houses reflected in water, flower boxes, soft afternoon light; no location words',
+        biome: 'canal_town',
+        difficulty: 2,
+    },
+    {
+        id: 'bergenbryggen',
+        name: 'Bryggen Wharf, Bergen, Norway',
+        description:
+            'Row of colorful historic wooden warehouses facing a fjord, backed by steep forested hills and low clouds.',
+        lat: 60.397,
+        lng: 5.323,
+        imagePrompt:
+            'Realistic photo of Bryggen wharf, vibrant wooden facades, moored boats, misty hillside backdrop; google street-view look, no text',
+        biome: 'fjord_wharf',
+        difficulty: 2,
+    },
+    {
+        id: 'bhaktapur',
+        name: 'Bhaktapur Durbar Square, Nepal',
+        description:
+            'Red-brick pagoda temples, carved wooden struts, and stone guardians set around a bustling medieval square.',
+        lat: 27.672,
+        lng: 85.429,
+        imagePrompt:
+            'Street-view style photo in Bhaktapur square, tiered pagoda temple, brick pavement, locals in traditional dress, Himalaya haze; no identifying text',
+        biome: 'pagoda_plaza',
+        difficulty: 4,
+    },
+    {
+        id: 'ushuaia',
+        name: 'Ushuaia, Tierra del Fuego, Argentina',
+        description:
+            'Colorful port town squeezed between snow-capped mountains and the Beagle Channel at the edge of the world.',
+        lat: -54.807,
+        lng: -68.304,
+        imagePrompt:
+            'Realistic street-view photo along Ushuaia waterfront, bright houses, distant snowy peaks, cold blue channel; no location signage',
+        biome: 'subantarctic_port',
+        difficulty: 4,
+    },
+    {
+        id: 'kotorbay',
+        name: 'Kotor Old Town, Montenegro',
+        description:
+            'Venetian stone alleys enclosed by fortress walls, tucked between emerald bay waters and rugged limestone peaks.',
+        lat: 42.424,
+        lng: 18.771,
+        imagePrompt:
+            'Realistic photo inside Kotor alley, stone facades, bay glimmer visible through gate, towering mountains; street-view style, no text',
+        biome: 'fjord_fort',
+        difficulty: 3,
+    },
+    {
+        id: 'gdansk',
+        name: 'Gdańsk Long Market, Poland',
+        description:
+            'Historic riverside promenade lined with ornate Hanseatic facades and a Medieval crane overlooking Motława River.',
+        lat: 54.350,
+        lng: 18.657,
+        imagePrompt:
+            'Realistic street-view of Gdańsk waterfront, tall-gabled houses, river reflections, Medieval crane, evening glow; no identifying words',
+        biome: 'riverside_hanse',
+        difficulty: 2,
+    },
+    {
+        id: 'lijiang',
+        name: 'Lijiang Old Town, Yunnan, China',
+        description:
+            'Cobblestone canals spanned by arched bridges, traditional Naxi wooden houses roofed with grey tiles and lanterns.',
+        lat: 26.872,
+        lng: 100.240,
+        imagePrompt:
+            'Realistic street-view photo of Lijiang canal at dusk, orange lanterns, wooden houses, stone bridge, Jade Dragon Snow Mountain faint in background; no text',
+        biome: 'canal_oldtown',
+        difficulty: 4,
     }
+
 
 ] as const

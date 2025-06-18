@@ -31,7 +31,7 @@ export const pointCalc = (guess: [number, number] | null, ans: [number, number])
     const totalDif = distanceAway(ansX, ansY, guessX, guessY)
     console.log('Miles Away: ', totalDif);
 
-    const points = 1000 / (1 + Math.pow(totalDif / 1000, 3))
+    const points = 1000 * Math.pow(Math.E, -1 * (totalDif / 600))
 
     return points
 }
