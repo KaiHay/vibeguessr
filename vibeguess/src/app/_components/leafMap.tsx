@@ -102,7 +102,11 @@ export default function MapLocation({ destination }: { destination: [number, num
                         bounds={boundery}//{guessed?[51,0.09]:null}
                         className="w-full h-full rounded-md border shadow-md"
                     >
-                        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+                        {/* <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" /> */}
+                        <TileLayer
+                            url="https://api.maptiler.com/maps/basic-v2/256/{z}/{x}/{y}.png?key=vGqYxQ6P8yJfnqlhikVh "
+                            attribution='&copy; <a href="https://www.maptiler.com/copyright/">MapTiler</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                        />
                         <LocationMarker />
                         {guessed ? <Marker position={destination} icon={targetDivIcon} /> : ''}
                         {guessed ? <Polyline pathOptions={{ color: 'green' }} positions={[markerPosition!, destination]} /> : ''}
