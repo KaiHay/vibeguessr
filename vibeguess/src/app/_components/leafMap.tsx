@@ -3,7 +3,7 @@
 import { MapContainer, TileLayer, Marker, useMapEvents, Popup, Polyline } from 'react-leaflet'
 import { useEffect, useRef, useState } from 'react'
 
-import L, { LatLngBoundsLiteral, Map as LeafletMap } from 'leaflet'
+import L, { type LatLngBoundsLiteral, Map as LeafletMap } from 'leaflet'
 import Guess from './guessButton'
 import { set } from 'zod'
 const personDivIcon = L.divIcon({
