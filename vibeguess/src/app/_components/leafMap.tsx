@@ -1,36 +1,54 @@
 'use client'
 
-import { MapContainer, TileLayer, Marker, useMapEvents, Popup } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker, useMapEvents, Popup, Polyline } from 'react-leaflet'
 import { useEffect, useRef, useState } from 'react'
 
-import L, { Map as LeafletMap } from 'leaflet'
+import L, { LatLngBoundsLiteral, Map as LeafletMap } from 'leaflet'
 import Guess from './guessButton'
+import { set } from 'zod'
 const personDivIcon = L.divIcon({
     html: `<div style="
-                    width: 32px;
-                    height: 32px;
+                    width: 16px;
+                    height: 22px;
                     border-radius: 50%;
-                    background: red;
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     font-size: 20px;
-                    border: 1px solid black;
+                    opacity: 90%;
                 ">🧍</div>`,
     className: '',
     iconSize: [32, 32],
-    iconAnchor: [16, 16],
+    iconAnchor: [10, 22],
 })
+
+const targetDivIcon = L.divIcon({
+    html: `<div style="
+                    width: 32px;
+                    height: 32px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 20px;
+                ">📍</div>`,
+    className: '',
+    iconSize: [32, 32],
+    iconAnchor: [16, 25],
+})
+const expandIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
+</svg>
+const expandContent = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M9 9V4.5M9 9H4.5M9 9 3.75 3.75M9 15v4.5M9 15H4.5M9 15l-5.25 5.25M15 9h4.5M15 9V4.5M15 9l5.25-5.25M15 15h4.5M15 15v4.5m0-4.5 5.25 5.25" />
+</svg>
 export default function MapLocation({ destination }: { destination: [number, number] }) {
     //const position: [number, number] = [51.505, -0.09]
     const [markerPosition, setMarkerPosition] = useState<[number, number] | null>(null)
     const [expanded, setExpand] = useState(false)
     const toggleMap = () => setExpand(!expanded)
     const [guessed, setEnd] = useState(false)
-
-    const expandContent = 'no'
     const mapRef = useRef<LeafletMap | null>(null)
-
+    const [boundery, setBoundery] = useState<LatLngBoundsLiteral>([[0, 0], [10, 10],])
     useEffect(() => {
         const id = setTimeout(() => mapRef.current?.invalidateSize(), 310) // 300ms + a hair
         return () => clearTimeout(id)
@@ -56,7 +74,12 @@ export default function MapLocation({ destination }: { destination: [number, num
             </Marker>
         ) : null
     }
-
+    useEffect(() => {
+        if (guessed && markerPosition) {
+            setBoundery([markerPosition, destination])
+            mapRef.current?.fitBounds([markerPosition, destination])
+        }
+    }, [guessed, markerPosition, destination])
     return (
         <div>
             <div
@@ -65,21 +88,24 @@ export default function MapLocation({ destination }: { destination: [number, num
                     ${guessed
                         ? 'left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px]'
                         : 'bottom-4 right-4 z-50'} 
-                ${expanded ? 'w-[600px] h-[400px]' : 'w-[200px] h-[150px]'
+                ${expanded ? 'w-[800px] h-[700px]' : 'w-[200px] h-[150px]'
                     }`}
             >
-                <div className={`relative ${guessed ? 'w-[700px] h-[500px]' : ''} ${expanded ? 'w-[600px] h-[400px]' : 'w-[200px] h-[150px]'}`}>
-                    {guessed ? '' : <button className="absolute top-4 right-4 bg-white text-black px-2 py-2 rounded shadow z-10000" onClick={toggleMap}>{expanded ? expandContent : 'lol'}</button>}
+                <div className={`relative ${guessed ? 'w-[700px] h-[500px]' : ''} ${expanded ? 'w-[800px] h-[700px]' : 'w-[200px] h-[150px]'}`}>
+                    {guessed ? '' : <button className="absolute top-4 right-4  text-black  rounded  z-10000" onClick={toggleMap}>{expanded ? expandContent : expandIcon}</button>}
                     <MapContainer
                         ref={mapRef}
-                        center={[51.505, -0.09]}
+                        maxBounds={[[-90, -180], [90, 180]]}
+                        maxBoundsViscosity={1.0}
                         zoom={3}
                         scrollWheelZoom={true}
+                        bounds={boundery}//{guessed?[51,0.09]:null}
                         className="w-full h-full rounded-md border shadow-md"
                     >
                         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
                         <LocationMarker />
-                        {guessed ? <Marker position={destination} icon={personDivIcon} ></Marker> : ''}
+                        {guessed ? <Marker position={destination} icon={targetDivIcon} /> : ''}
+                        {guessed ? <Polyline pathOptions={{ color: 'green' }} positions={[markerPosition!, destination]} /> : ''}
                     </MapContainer>
                     <Guess markerPosition={markerPosition} destination={destination} setGuess={setEnd} />
                 </div>

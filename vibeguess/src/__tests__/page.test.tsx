@@ -1,7 +1,6 @@
 import { test, expect } from 'vitest';
 
 
-import { render, screen, within } from "@testing-library/react";
 import { pointCalc } from "../app/_components/functions/distanceCalcs";
 
 test("Point Calc Test", () => {
