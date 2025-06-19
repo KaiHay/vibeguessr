@@ -1,5 +1,7 @@
 import { useState, type Dispatch, type SetStateAction } from "react"
 import { pointCalc } from "./functions/distanceCalcs";
+import { api } from "~/trpc/react";
+import { useSession } from "next-auth/react";
 
 
 
@@ -9,13 +11,22 @@ export default function Guess({ markerPosition, destination, setGuess }:
         setGuess: Dispatch<SetStateAction<boolean>>
     }) {
 
+    const { data: session, status } = useSession()
+    const addPoints = api.player.addPoints.useMutation();
+
     const [points, setPoints] = useState(0)
     console.log('Points: ', points);
     const clickGuess = () => {
         console.log('Pos: ', markerPosition)
-        setPoints(pointCalc(markerPosition, destination))
+        const calc = pointCalc(markerPosition, destination)
+        setPoints(calc)
         setGuess((guess) => !guess)
+        if (session?.user.id) {
+            addPoints.mutate({ Id: session.user.id, addPoint: calc.toString() })
+        } else {
+            console.log('Not Logged In');
 
+        }
 
     }
     if (!markerPosition) {
@@ -23,6 +34,7 @@ export default function Guess({ markerPosition, destination, setGuess }:
     }
     if (points > 0) {
         const scorePercent = points / 1000
+
         return (
             <div className="pt-1">
                 <div className="border border-black relative h-[26px] rounded-2xl">

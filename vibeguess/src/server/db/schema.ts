@@ -1,5 +1,5 @@
 import { relations, sql } from "drizzle-orm";
-import { index, pgTableCreator, primaryKey } from "drizzle-orm/pg-core";
+import { foreignKey, index, pgTableCreator, primaryKey } from "drizzle-orm/pg-core";
 import { type AdapterAccount } from "next-auth/adapters";
 
 /**
@@ -30,7 +30,11 @@ export const posts = createTable(
     index("name_idx").on(t.name),
   ],
 );
-
+export const players = createTable('player', (d) => ({
+  id: d.varchar({ length: 255 }).primaryKey(),
+  points: d.varchar({ length: 256 }),
+}), (t) => [foreignKey({ columns: [t.id], foreignColumns: [users.id] })]
+)
 export const users = createTable("user", (d) => ({
   id: d
     .varchar({ length: 255 })
