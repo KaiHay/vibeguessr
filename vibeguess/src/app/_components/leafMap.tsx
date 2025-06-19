@@ -80,18 +80,19 @@ export default function MapLocation({ destination }: { destination: [number, num
             mapRef.current?.fitBounds([markerPosition, destination])
         }
     }, [guessed, markerPosition, destination])
+    console.log(guessed)
     return (
         <div>
             <div
                 className={`
                  fixed transition-all duration-300 border rounded-md shadow-md 
                     ${guessed
-                        ? 'left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px]'
+                        ? 'left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[700px] bottom-auto right-auto'
                         : 'bottom-4 right-4 z-50'} 
-                ${expanded ? 'w-[800px] h-[700px]' : 'w-[200px] h-[150px]'
+                ${guessed ? `` : (expanded ? 'w-[800px] h-[700px]' : 'w-[200px] h-[150px]')
                     }`}
             >
-                <div className={`relative ${guessed ? 'w-[700px] h-[500px]' : ''} ${expanded ? 'w-[800px] h-[700px]' : 'w-[200px] h-[150px]'}`}>
+                <div className={`relative ${guessed ? 'w-[800px] h-[700px]' : (expanded ? 'w-[800px] h-[700px]' : 'w-[200px] h-[150px]')}`}>
                     {guessed ? '' : <button className="absolute top-4 right-4  text-black  rounded  z-10000" onClick={toggleMap}>{expanded ? expandContent : expandIcon}</button>}
                     <MapContainer
                         ref={mapRef}

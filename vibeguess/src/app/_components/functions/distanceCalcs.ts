@@ -20,11 +20,11 @@ const distanceAway = (lat1: number, lon1: number, lat2: number, lon2: number): n
 
 }
 
-export const pointCalc = (guess: [number, number] | null, ans: [number, number]) => {
+export const pointCalc = (guess: [number, number] | null, ans: [number, number]): [number, number] => {
     console.log('marker Passed: ', guess)
     if (!guess) {
         console.log('why are you here')
-        return 0
+        return [0, 9999999999999]
     }
     const [ansX, ansY] = ans
     const [guessX, guessY] = guess
@@ -33,5 +33,5 @@ export const pointCalc = (guess: [number, number] | null, ans: [number, number])
 
     const points = 1000 * Math.pow(Math.E, -1 * (totalDif / 600))
 
-    return points
+    return [points, totalDif]
 }

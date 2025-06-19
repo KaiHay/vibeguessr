@@ -1,7 +1,8 @@
-import { useState, type Dispatch, type SetStateAction } from "react"
+import { useEffect, useState, type Dispatch, type SetStateAction } from "react"
 import { pointCalc } from "./functions/distanceCalcs";
 import { api } from "~/trpc/react";
 import { useSession } from "next-auth/react";
+import Link from "next/link";
 
 
 
@@ -15,10 +16,14 @@ export default function Guess({ markerPosition, destination, setGuess }:
     const addPoints = api.player.addPoints.useMutation();
 
     const [points, setPoints] = useState(0)
+    const [playerPoints, setPlayerPoints] = useState(0)
+    const [distance, setDistance] = useState(0)
+    const [ready, setReady] = useState(false)
     console.log('Points: ', points);
     const clickGuess = () => {
         console.log('Pos: ', markerPosition)
-        const calc = pointCalc(markerPosition, destination)
+        const [calc, dist] = pointCalc(markerPosition, destination)
+        setDistance(dist)
         setPoints(calc)
         setGuess((guess) => !guess)
         if (session?.user.id) {
@@ -29,6 +34,12 @@ export default function Guess({ markerPosition, destination, setGuess }:
         }
 
     }
+    useEffect(() => {
+        setReady(false);                     // reset to 0 %
+        const id = setTimeout(() => setReady(true), 500); // 50 ms delay
+        return () => clearTimeout(id);
+    }, [points]);
+
     if (!markerPosition) {
         return
     }
@@ -36,15 +47,28 @@ export default function Guess({ markerPosition, destination, setGuess }:
         const scorePercent = points / 1000
 
         return (
-            <div className="pt-1">
-                <div className="border border-black relative h-[26px] rounded-2xl">
-                    <div className={`absolute z-10 transition-[width] duration-1000 h-6 rounded-2xl bg-green-600 ${points > 0 ? `w-[${Math.round(scorePercent * 100)}%]` : 'w-0'}`} />
+            <div className="pt-1 ">
+                <div className=" p-2 rounded-md">
+                    <div className="border border-black bg-stone-700 relative flex flex-col h-[26px] rounded-2xl">
+                        <div className="">
+                            <div className="absolute z-20 transition-[width] ease-out duration-1000 h-6 rounded-2xl bg-green-600" style={{ width: ready ? `${Math.round(scorePercent * 100)}%` : '0%' }} />
 
 
-                    <div className={`absolute w-full text-center items-center z-50`}>
-                        You scored: {points.toFixed(3)}/1000
-                    </div>
-                </div></div>
+                            <div className={`absolute w-full text-center font-black text-white items-center z-50`}>
+                                Score:  {points.toFixed(2)} / 1000
+                            </div>
+                            <div className="opacity-0">hi</div>
+                        </div>
+                        <div className="text-center">
+                            {distance ? (<div className="flex flex-row w-full justify-evenly">
+                                <div className={`bg-black`}>You were {distance.toFixed(2)} miles away</div>
+                                <div className={``}><Link href={'/'}>New Game</Link></div>
+                            </div>)
+                                : ''}
+                        </div>
+
+
+                    </div></div></div>
         )
     }
     return (
