@@ -3,8 +3,7 @@ import Link from "next/link"
 import { signIn, useSession } from "next-auth/react"
 import { redirect } from "next/navigation"
 import { api } from "~/trpc/server"
-
-
+import Image from 'next/image'
 
 export default function Login() {
     const { data: session, status } = useSession()
@@ -13,8 +12,9 @@ export default function Login() {
     }
     return (
         <div className="flex flex-col justify-center items-center h-screen w-full bg-gradient-to-bl from-blue-400 to-sky-950">
+            <Image fill alt='login img' src='/login.png' className="" />
             {/* <div className="flex flex-col items-center gap-2"> */}
-            <div>
+            <div className="z-20">
                 <div className="text-center">Vibe Guesser</div>
                 <div className="pb-1">            <button
                     onClick={async () => {

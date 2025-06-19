@@ -418,6 +418,126 @@ export const PLACES = [
             'Realistic street-view photo on California Street, cable car tracks, descending hill with Golden Gate Bridge visible through light fog; no text',
         biome: 'bay_city',
         difficulty: 1,
+    },
+    {
+        id: 'lisbon',
+        name: 'Lisbon, Portugal',
+        description:
+            'Pastel-tiled townhouses and yellow trams climbing steep alleys toward São Jorge Castle overlooking the Tagus estuary.',
+        lat: 38.713,
+        lng: -9.139,
+        imagePrompt:
+            'Realistic street-view style photo on Lisbon’s Alfama hill, yellow tram 28 rattling past azulejo-clad facades, red-tiled roofs and river glint below; no location text',
+        biome: 'coastal_hillcity',
+        difficulty: 1,
+    },
+    {
+        id: 'quebec',
+        name: 'Québec City, Canada',
+        description:
+            'Stone ramparts and Château Frontenac towers rising over cobbled streets and the icy St. Lawrence River.',
+        lat: 46.813,
+        lng: -71.208,
+        imagePrompt:
+            'Realistic photo from Dufferin Terrace, Château Frontenac turrets against winter sky, frozen river below, horse-drawn sleigh passing; no location words',
+        biome: 'walled_rivercity',
+        difficulty: 2,
+    },
+    {
+        id: 'auckland',
+        name: 'Auckland, New Zealand',
+        description:
+            'Modern skyline ringed by dormant volcanic cones, twin harbours dotted with white sails.',
+        lat: -36.852,
+        lng: 174.763,
+        imagePrompt:
+            'Realistic street-view photo on Auckland waterfront, Sky Tower rising above marina, sailboats, Rangitoto volcano in distance; no identifying text',
+        biome: 'harbour_volcano',
+        difficulty: 2,
+    },
+    {
+        id: 'venice',
+        name: 'Venice, Italy',
+        description:
+            'Labyrinth of canals crossed by arched bridges, gondolas gliding past ornate palazzi and striped mooring poles.',
+        lat: 45.438,
+        lng: 12.327,
+        imagePrompt:
+            'Realistic canal-level photo in Venice, gondola in foreground, stone bridge, faded pastel palaces reflected in water; no location wording',
+        biome: 'canal_city',
+        difficulty: 1,
+    },
+    {
+        id: 'dubai',
+        name: 'Dubai, United Arab Emirates',
+        description:
+            'Futuristic skyline punctuated by the Burj Khalifa, desert sands meeting turquoise Gulf waters.',
+        lat: 25.197,
+        lng: 55.274,
+        imagePrompt:
+            'Realistic street-view near Burj Khalifa, glass skyscrapers, date palms, clear blue sky, desert haze on horizon; omit all text',
+        biome: 'desert_megacity',
+        difficulty: 1,
+    },
+    {
+        id: 'berlin',
+        name: 'Berlin, Germany',
+        description:
+            'Eclectic mix of neoclassical monuments, modern glass cubes, and East-Side graffiti along the Spree.',
+        lat: 52.520,
+        lng: 13.405,
+        imagePrompt:
+            'Realistic photo at East Side Gallery, colourful murals on Berlin Wall segment, Oberbaum Bridge and TV Tower in background; no location text',
+        biome: 'river_metropolis',
+        difficulty: 1,
+    },
+    {
+        id: 'chicago',
+        name: 'Chicago, USA',
+        description:
+            'Art-deco skyscrapers lining the Chicago River, steel bridges lifting for boats beneath towering glass walls.',
+        lat: 41.888,
+        lng: -87.627,
+        imagePrompt:
+            'Realistic street-view photo on Chicago Riverwalk, Wrigley Building and steel bridge above emerald water, early evening light; no identifying words',
+        biome: 'lake_metropolis',
+        difficulty: 1,
+    },
+    {
+        id: 'seoul',
+        name: 'Seoul, South Korea',
+        description:
+            'Neon-lit streets beneath mountain ridges, ancient palace gates juxtaposed with high-tech towers.',
+        lat: 37.566,
+        lng: 126.978,
+        imagePrompt:
+            'Realistic night street-view in Myeongdong, neon signs, food stalls, Namsan Tower glowing above rooftops; no location text',
+        biome: 'mountain_megacity',
+        difficulty: 1,
+    },
+    {
+        id: 'mumbai',
+        name: 'Mumbai, India',
+        description:
+            'Victorian Gothic stone arches meeting modern high-rises along Arabian Sea promenades and bustling bazaars.',
+        lat: 19.076,
+        lng: 72.877,
+        imagePrompt:
+            'Realistic photo at Gateway of India promenade, stone arch silhouetted against hazy sunset, boats bobbing in harbour; street-view style, no location words',
+        biome: 'tropical_megacity',
+        difficulty: 2,
+    },
+    {
+        id: 'amsterdam',
+        name: 'Amsterdam, Netherlands',
+        description:
+            'Gabled canal houses leaning over bicycle-lined quays, arched brick bridges mirrored in calm waters.',
+        lat: 52.373,
+        lng: 4.894,
+        imagePrompt:
+            'Realistic canal-view photo in Amsterdam, row of narrow gabled houses, bikes chained to railing, flower baskets, soft morning light; no identifying text',
+        biome: 'canal_city',
+        difficulty: 1,
     }
 
 
