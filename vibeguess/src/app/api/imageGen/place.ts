@@ -298,7 +298,128 @@ export const PLACES = [
             'Realistic street-view photo of Lijiang canal at dusk, orange lanterns, wooden houses, stone bridge, Jade Dragon Snow Mountain faint in background; no text',
         biome: 'canal_oldtown',
         difficulty: 4,
+    },
+    {
+        id: 'paris',
+        name: 'Paris, France',
+        description:
+            'Elegant Haussmann boulevards radiating from the Eiffel Tower, with café terraces, wrought-iron balconies and the Seine winding below.',
+        lat: 48.858,
+        lng: 2.294,
+        imagePrompt:
+            'Realistic street-view style photo near Eiffel Tower, iron lattice rising above tree-lined avenue, stone façades and café tables in foreground; no location text',
+        biome: 'iconic_city',
+        difficulty: 1,
+    },
+    {
+        id: 'nyc',
+        name: 'New York City, USA',
+        description:
+            'Soaring Midtown skyscrapers flanking bustling avenues of yellow cabs, neon signage and steam grates.',
+        lat: 40.758,
+        lng: -73.985,
+        imagePrompt:
+            'Realistic street-view photo of Times Square area, tall glass towers, LED billboards, yellow taxis, early evening glow; no identifying words',
+        biome: 'megacity',
+        difficulty: 1,
+    },
+    {
+        id: 'tokyo',
+        name: 'Tokyo, Japan',
+        description:
+            'Neon-soaked Shibuya crossing packed with umbrellas and animated billboards beneath looming towers.',
+        lat: 35.659,
+        lng: 139.700,
+        imagePrompt:
+            'Realistic street-view at Shibuya crossing, crowd waiting, bright neon signs, crosswalk stripes wet from rain; no location text',
+        biome: 'megacity',
+        difficulty: 1,
+    },
+    {
+        id: 'sydney',
+        name: 'Sydney, Australia',
+        description:
+            'Iconic harbourfront with white-sailed Opera House and steel arch of Harbour Bridge framing deep-blue water.',
+        lat: -33.856,
+        lng: 151.215,
+        imagePrompt:
+            'Realistic photo from Circular Quay, Opera House sails in foreground, Harbour Bridge behind, boats on sparkling water; street-view look, no location words',
+        biome: 'harbour_city',
+        difficulty: 1,
+    },
+    {
+        id: 'rio',
+        name: 'Rio de Janeiro, Brazil',
+        description:
+            'Golden Copacabana curve backed by Sugarloaf peak and lush jungle-clad hills, beach kiosks humming with music.',
+        lat: -22.971,
+        lng: -43.182,
+        imagePrompt:
+            'Realistic street-view photo on Copacabana promenade, black-and-white wave tiles, beach umbrellas, Sugarloaf Mountain beyond; no identifying text',
+        biome: 'tropical_coast',
+        difficulty: 1,
+    },
+    {
+        id: 'cairo',
+        name: 'Cairo & Giza Pyramids, Egypt',
+        description:
+            'Ancient limestone pyramids rising from the desert rim with modern city haze on the horizon.',
+        lat: 29.979,
+        lng: 31.134,
+        imagePrompt:
+            'Realistic photo near Great Pyramid, massive stone blocks, camel tracks in sand, distant Cairo skyline; google street-view style, no text',
+        biome: 'desert_landmark',
+        difficulty: 1,
+    },
+    {
+        id: 'istanbul',
+        name: 'Istanbul, Türkiye',
+        description:
+            'Skyline of domes and minarets spanning the Bosphorus, bustling bazaars and ferry-filled strait.',
+        lat: 41.008,
+        lng: 28.978,
+        imagePrompt:
+            'Realistic photo from Galata Bridge, mosques with minarets at sunset, ferries on Bosphorus, fishermen on railing; no location words',
+        biome: 'historic_city',
+        difficulty: 1,
+    },
+    {
+        id: 'barcelona',
+        name: 'Barcelona, Spain',
+        description:
+            'Modernist avenues leading to the spired Sagrada Familia, palm-lined beaches and colorful mosaic terraces.',
+        lat: 41.403,
+        lng: 2.174,
+        imagePrompt:
+            'Realistic street-view of Sagrada Familia façade, cranes above intricate spires, pedestrians and bikes on broad avenue; no identifying text',
+        biome: 'modernist_city',
+        difficulty: 1,
+    },
+    {
+        id: 'capetown',
+        name: 'Cape Town, South Africa',
+        description:
+            'Table Mountain’s flat summit towering behind the V&A Waterfront and colorful Bo-Kaap houses.',
+        lat: -33.924,
+        lng: 18.424,
+        imagePrompt:
+            'Realistic photo of Bo-Kaap street, rows of bright pastel houses, Table Mountain looming under clear sky; street-view style, no location words',
+        biome: 'coastal_city',
+        difficulty: 2,
+    },
+    {
+        id: 'sf',
+        name: 'San Francisco, USA',
+        description:
+            'Steep cable-car streets descending toward the orange span of Golden Gate Bridge and Pacific fog banks.',
+        lat: 37.819,
+        lng: -122.478,
+        imagePrompt:
+            'Realistic street-view photo on California Street, cable car tracks, descending hill with Golden Gate Bridge visible through light fog; no text',
+        biome: 'bay_city',
+        difficulty: 1,
     }
+
 
 
 ] as const

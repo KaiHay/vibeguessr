@@ -1,28 +1,34 @@
-//import Link from "next/link";
-import { auth } from "~/server/auth";
-import { api } from "~/trpc/server";
-import Map from "./_components/map";
-import { PLACES } from "./api/imageGen/place";
-import Image from 'next/image'
-
-export default async function Home() {
-  const session = await auth().then((poo) => console.log(poo));
-  console.log('lol: ',session);
+"use client"
+import Link from "next/link"
+import { signIn, useSession } from "next-auth/react"
+import { redirect } from "next/navigation"
+import { api } from "~/trpc/server"
 
 
-  const place = PLACES[Math.floor(Math.random() * PLACES.length)]
-  if (!place?.id) {
-    return <div>lol</div>
-  }
 
+export default function Login() {
+    const { data: session, status } = useSession()
+    if (session) {
+        redirect(`/game`)
+    }
+    return (
+        <div className="flex flex-col justify-center items-center h-screen w-full bg-gradient-to-bl from-blue-400 to-sky-950">
+            {/* <div className="flex flex-col items-center gap-2"> */}
+            <div>
+                <div className="text-center">Vibe Guesser</div>
+                <div className="pb-1">            <button
+                    onClick={async () => {
 
-  return (
-    <main className="relative flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#406e00] to-[#15162c] text-white">
-      <div className="">
-        <Image src={`/image-${place.id}.png`} alt="Generated" fill className='' />
-      </div>
-      <Map destination={[place.lat, place.lng]} />
-    </main>
+                        await signIn("google")
 
-  );
+                    }} className="bg-amber-400 w-full p-1 rounded-2xl transition hover:-translate-x-0.5 hover:-translate-y-0.5"
+                >Google SignIn</button></div>
+
+                <div className="bg-amber-400 p-1 rounded-2xl transition hover:-translate-x-0.5 hover:-translate-y-0.5">
+                    <Link className='w-full p-1' href={'/game'}>Play as Guest</Link >
+                </div>
+            </div>
+
+        </div>
+    )
 }
