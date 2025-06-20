@@ -66,7 +66,7 @@ export default function Guess({ markerPosition, destination, setGuess }:
                                 </div>
                                 <div className="bg-black border border-black font-black rounded-md p-1 translate-y-[1px] transition-all hover:translate-x-1" >
                                     <div className={``}>
-                                        <Link href={'/'} className="flex flex-row ">
+                                        <Link href={'/game'} className="flex flex-row ">
                                             <div>Next</div>
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
 
