@@ -58,9 +58,6 @@ export default function Guess({ markerPosition, setExpand, destination, guess, s
 
 
     }
-    if (!markerPosition) {
-        return
-    }
     if (guess) {
         const scorePercent = points / 1000
 
@@ -101,6 +98,10 @@ export default function Guess({ markerPosition, setExpand, destination, guess, s
                     </div></div></div>
         )
     }
+    if (!markerPosition) {
+        return
+    }
+
     return (
         <div className='bg-red-800 w-1/4 min-w-[70px] text-center p-1 rounded-lg absolute bottom-4 left-4 z-10000'>
             <button className='w-full' onClick={() => clickGuess()}>Guess</button>

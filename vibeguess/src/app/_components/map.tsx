@@ -2,6 +2,7 @@
 
 import dynamic from 'next/dynamic'
 import Image from "next/image";
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 // load the real map component only in the browser
@@ -37,9 +38,13 @@ export default function Map({ destination, placeID }: { destination: [[number, n
     console.log("Total Points: ", totalPoints)
     if (currentRound == 3) {
         return (
-            <div className='w-full h-screen flex justify-center items-center bg-amber-700'>
-                <div className='text-black font-black'>
-                    You suck you scored: {totalPoints.toFixed(2)} in 3 rounds
+            <div className='w-full h-screen flex flex-col justify-center gap-3 items-center bg-amber-700'>
+                <div className='text-black font-black flex flex-row'>
+                    You suck, you scored: <div className='text-cyan-100 pl-1 pr-1'>{totalPoints.toFixed(2)}</div> points in 3 rounds
+                </div>
+
+                <div className='bg-yellow-300 p-1 rounded-2xl transition-all hover:translate-x-1 hover:-translate-y-0.5'>
+                <Link href={'/game'} className=' p-1 text-black cursor-pointer hover:text-gray-600 font-black'>New Game</Link>
                 </div>
             </div>
         )
@@ -53,7 +58,7 @@ export default function Map({ destination, placeID }: { destination: [[number, n
             <div className="">
                 <Image src={`/image-${placeID[currentRound]}.png`} alt="Generated" fill className='' />
             </div>
-            <ClientLeafletMap destination={destination[currentRound]!} setRound={setCurrentRound} setPoints={setTotalPoints} />
+            <ClientLeafletMap destination={destination[currentRound]!} setRound={setCurrentRound} setPoints={setTotalPoints} end={timeEnd} />
 
         </div>
     )

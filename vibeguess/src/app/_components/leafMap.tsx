@@ -42,11 +42,13 @@ const expandIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="
 const expandContent = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
     <path strokeLinecap="round" strokeLinejoin="round" d="M9 9V4.5M9 9H4.5M9 9 3.75 3.75M9 15v4.5M9 15H4.5M9 15l-5.25 5.25M15 9h4.5M15 9V4.5M15 9l5.25-5.25M15 15h4.5M15 15v4.5m0-4.5 5.25 5.25" />
 </svg>
-export default function MapLocation({ destination, setRound, setPoints }:
-     { destination: [number, number], 
+export default function MapLocation({ destination, setRound, setPoints, end }:
+    {
+        destination: [number, number],
         setRound: Dispatch<SetStateAction<number>>,
-        setPoints: Dispatch<SetStateAction<number>>
-     }) {
+        setPoints: Dispatch<SetStateAction<number>>,
+        end: boolean
+    }) {
     //const position: [number, number] = [51.505, -0.09]
     const [markerPosition, setMarkerPosition] = useState<[number, number] | null>(null)
     const [expanded, setExpand] = useState(false)
@@ -85,6 +87,9 @@ export default function MapLocation({ destination, setRound, setPoints }:
             mapRef.current?.fitBounds([markerPosition, destination])
         }
     }, [guessed, markerPosition, destination])
+    if (end && !guessed) {
+        setEnd(true)
+    }
     return (
         <div>
             <div
@@ -114,9 +119,9 @@ export default function MapLocation({ destination, setRound, setPoints }:
                         />
                         <LocationMarker />
                         {guessed ? <Marker position={destination} icon={targetDivIcon} /> : ''}
-                        {guessed ? <Polyline pathOptions={{ color: 'green' }} positions={[markerPosition!, destination]} /> : ''}
+                        {markerPosition ? guessed ? <Polyline pathOptions={{ color: 'green' }} positions={[markerPosition!, destination]} /> : '' : ''}
                     </MapContainer>
-                    <Guess markerPosition={markerPosition} guess={guessed} setExpand={setExpand} destination={destination} setGuess={setEnd} setRound={setRound} setTPoints={setPoints}/>
+                    <Guess markerPosition={markerPosition} guess={guessed} setExpand={setExpand} destination={destination} setGuess={setEnd} setRound={setRound} setTPoints={setPoints} />
                 </div>
             </div>
         </div>
