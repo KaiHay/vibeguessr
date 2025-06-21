@@ -85,7 +85,6 @@ export default function MapLocation({ destination, setRound, setPoints }:
             mapRef.current?.fitBounds([markerPosition, destination])
         }
     }, [guessed, markerPosition, destination])
-    console.log(guessed)
     return (
         <div>
             <div
@@ -117,7 +116,7 @@ export default function MapLocation({ destination, setRound, setPoints }:
                         {guessed ? <Marker position={destination} icon={targetDivIcon} /> : ''}
                         {guessed ? <Polyline pathOptions={{ color: 'green' }} positions={[markerPosition!, destination]} /> : ''}
                     </MapContainer>
-                    <Guess markerPosition={markerPosition} destination={destination} setGuess={setEnd} setRound={setRound} setTPoints={setPoints}/>
+                    <Guess markerPosition={markerPosition} guess={guessed} setExpand={setExpand} destination={destination} setGuess={setEnd} setRound={setRound} setTPoints={setPoints}/>
                 </div>
             </div>
         </div>

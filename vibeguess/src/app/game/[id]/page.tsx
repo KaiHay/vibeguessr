@@ -20,6 +20,8 @@ export default async function Home(props: { params: Promise<{ id: string }> }) {
     }
   }
   let rand = 0
+  const seededRand = new Rand(id)
+
   if (id == 'daily') {
     if (session) {
       const date = new Date();
@@ -38,7 +40,6 @@ export default async function Home(props: { params: Promise<{ id: string }> }) {
   } else {
 
 
-    const seededRand = new Rand(id)
     rand = seededRand.next()
     console.log('seeded random number is: ', rand);
   }
@@ -47,6 +48,12 @@ export default async function Home(props: { params: Promise<{ id: string }> }) {
   if (!place?.id) {
     return <div>lol</div>
   }
+  let c_places = []
+  for (let i = 0; i < 3; i++) {
+    const temp = PLACES[Math.floor(rand * PLACES.length)]
+    c_places.push(temp)
+    rand = seededRand.next()
+  }
   console.log('placeid: ', place.id)
 
   return (
@@ -54,7 +61,7 @@ export default async function Home(props: { params: Promise<{ id: string }> }) {
       <div className="">
         {/* <Image src={`/image-${place.id}.png`} alt="Generated" fill className='' /> */}
       </div>
-      <Map destination={[place.lat, place.lng]} placeID={[place.id, 'tokyo', 'dubai']} />
+      <Map destination={[[place.lat, place.lng], [c_places[1]!.lat,c_places[1]!.lng], [c_places[2]!.lat, c_places[2]!.lng]]} placeID={[place.id, c_places[1]!.id, c_places[2]!.id]} />
     </main>
 
   );

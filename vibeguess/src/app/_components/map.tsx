@@ -10,10 +10,10 @@ const ClientLeafletMap = dynamic(() => import('./leafMap'), {
     loading: () => <p>Loading map…</p>,
 })
 
-export default function Map({ destination, placeID }: { destination: [number, number], placeID: [string, string, string] }) {
+export default function Map({ destination, placeID }: { destination: [[number, number], [number, number], [number, number]], placeID: [string, string, string] }) {
     const [totalPoints, setTotalPoints] = useState(0)
     const [currentRound, setCurrentRound] = useState(0)
-    const [seconds, setSeconds] = useState(60)
+    const [seconds, setSeconds] = useState(30)
     const [timeEnd, setTimeEnd] = useState(false)
 
     useEffect(() => {
@@ -34,18 +34,26 @@ export default function Map({ destination, placeID }: { destination: [number, nu
         setSeconds(30)
     }, [currentRound])
 
-    console.log("round",currentRound)
-
+    console.log("Total Points: ", totalPoints)
+    if (currentRound == 3) {
+        return (
+            <div className='w-full h-screen flex justify-center items-center bg-amber-700'>
+                <div className='text-black font-black'>
+                    You suck you scored: {totalPoints.toFixed(2)} in 3 rounds
+                </div>
+            </div>
+        )
+    }
     return (
         <div className='relative w-full h-screen'>
-            <div className='absolute top-2 z-10 left-1/2 -translate-x-1/2 flex flex-col text-center'>
-                <h1 className='z-50 font-black text-green-500'>Time Remaining: {seconds} seconds</h1>
+            <div className='absolute top-2 z-10 left-1/2 -translate-x-1/2 bg-gray-500 p-1 rounded-full flex flex-col text-center'>
+                <h1 className='z-50 font-black text-white'>Time Remaining: {seconds} seconds</h1>
                 {timeEnd && <h2>Time's up!</h2>}
             </div>
             <div className="">
                 <Image src={`/image-${placeID[currentRound]}.png`} alt="Generated" fill className='' />
             </div>
-            <ClientLeafletMap destination={destination} setRound={setCurrentRound} setPoints={setTotalPoints} />
+            <ClientLeafletMap destination={destination[currentRound]!} setRound={setCurrentRound} setPoints={setTotalPoints} />
 
         </div>
     )

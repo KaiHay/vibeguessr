@@ -6,12 +6,15 @@ import Link from "next/link";
 
 
 
-export default function Guess({ markerPosition, destination, setGuess, setRound, setTPoints }:
+export default function Guess({ markerPosition, setExpand, destination, guess, setGuess, setRound, setTPoints }:
     {
         markerPosition: [number, number] | null; destination: [number, number];
         setGuess: Dispatch<SetStateAction<boolean>>,
         setRound: Dispatch<SetStateAction<number>>,
-        setTPoints: Dispatch<SetStateAction<number>>
+        setTPoints: Dispatch<SetStateAction<number>>,
+        setExpand: Dispatch<SetStateAction<boolean>>,
+        guess: boolean
+
     }) {
 
     const { data: session, status } = useSession()
@@ -45,15 +48,20 @@ export default function Guess({ markerPosition, destination, setGuess, setRound,
     const nextClick = () => {
         setRound((prev) => {
             console.log('SETTING ROUND: ', prev);
+
+
             return prev + 1
 
         })
+        setExpand(false)
+        setGuess(false)
+
 
     }
     if (!markerPosition) {
         return
     }
-    if (points > 0) {
+    if (guess) {
         const scorePercent = points / 1000
 
         return (
@@ -75,7 +83,7 @@ export default function Guess({ markerPosition, destination, setGuess, setRound,
                                     <div className={``}>You were {distance.toFixed(2)} miles away</div>
                                 </div>
                                 <div className="bg-black border border-black font-black rounded-md p-1 translate-y-[1px] transition-all hover:translate-x-1" >
-                                    <button onClick={(() => nextClick())} className={``}>
+                                    <button onClick={(() => nextClick())} className={`flex flex-row`}>
                                         {/* <Link href={'/game'} className="flex flex-row "></Link> */}
                                         <div>Next</div>
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
