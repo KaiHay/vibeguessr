@@ -1,11 +1,12 @@
 'use client'
 
 import { MapContainer, TileLayer, Marker, useMapEvents, Popup, Polyline } from 'react-leaflet'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, type Dispatch, type SetStateAction } from 'react'
 
 import L, { type LatLngBoundsLiteral, Map as LeafletMap } from 'leaflet'
 import Guess from './guessButton'
 import { set } from 'zod'
+import type { N } from 'vitest/dist/chunks/environment.d.cL3nLXbE.js'
 const personDivIcon = L.divIcon({
     html: `<div style="
                     width: 16px;
@@ -41,7 +42,11 @@ const expandIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="
 const expandContent = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
     <path strokeLinecap="round" strokeLinejoin="round" d="M9 9V4.5M9 9H4.5M9 9 3.75 3.75M9 15v4.5M9 15H4.5M9 15l-5.25 5.25M15 9h4.5M15 9V4.5M15 9l5.25-5.25M15 15h4.5M15 15v4.5m0-4.5 5.25 5.25" />
 </svg>
-export default function MapLocation({ destination }: { destination: [number, number] }) {
+export default function MapLocation({ destination, setRound, setPoints }:
+     { destination: [number, number], 
+        setRound: Dispatch<SetStateAction<number>>,
+        setPoints: Dispatch<SetStateAction<number>>
+     }) {
     //const position: [number, number] = [51.505, -0.09]
     const [markerPosition, setMarkerPosition] = useState<[number, number] | null>(null)
     const [expanded, setExpand] = useState(false)
@@ -80,7 +85,6 @@ export default function MapLocation({ destination }: { destination: [number, num
             mapRef.current?.fitBounds([markerPosition, destination])
         }
     }, [guessed, markerPosition, destination])
-    console.log(guessed)
     return (
         <div>
             <div
@@ -112,7 +116,7 @@ export default function MapLocation({ destination }: { destination: [number, num
                         {guessed ? <Marker position={destination} icon={targetDivIcon} /> : ''}
                         {guessed ? <Polyline pathOptions={{ color: 'green' }} positions={[markerPosition!, destination]} /> : ''}
                     </MapContainer>
-                    <Guess markerPosition={markerPosition} destination={destination} setGuess={setEnd} />
+                    <Guess markerPosition={markerPosition} guess={guessed} setExpand={setExpand} destination={destination} setGuess={setEnd} setRound={setRound} setTPoints={setPoints}/>
                 </div>
             </div>
         </div>

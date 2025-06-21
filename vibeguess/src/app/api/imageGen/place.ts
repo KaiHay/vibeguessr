@@ -538,6 +538,126 @@ export const PLACES = [
             'Realistic canal-view photo in Amsterdam, row of narrow gabled houses, bikes chained to railing, flower baskets, soft morning light; no identifying text',
         biome: 'canal_city',
         difficulty: 1,
+    },
+    {
+        id: 'london',
+        name: 'London, United Kingdom',
+        description:
+            'Iconic Thames-side skyline: Big Ben ringing over Parliament, red double-decker buses and the glass Shard piercing grey skies.',
+        lat: 51.507,
+        lng: -0.128,
+        imagePrompt:
+            'Realistic street-view photo at Westminster Bridge, Big Ben tower, red bus crossing, London Eye silhouette downstream; no location text',
+        biome: 'river_metropolis',
+        difficulty: 1,
+    },
+    {
+        id: 'rome',
+        name: 'Rome, Italy',
+        description:
+            'Ancient marbles and baroque fountains scattered among buzzing scooter-lined piazzas under warm Mediterranean light.',
+        lat: 41.893,
+        lng: 12.483,
+        imagePrompt:
+            'Realistic street-view beside Colosseum arches, vespa zip past cobbled road, umbrella pines and golden evening glow; no identifying words',
+        biome: 'historic_city',
+        difficulty: 1,
+    },
+    {
+        id: 'prague',
+        name: 'Prague, Czech Republic',
+        description:
+            'Gothic spires and pastel facades rising above the Vltava, Charles Bridge statues watching over red-roofed Old Town.',
+        lat: 50.087,
+        lng: 14.421,
+        imagePrompt:
+            'Realistic photo on Charles Bridge at dawn, stone saints, mist over river, Prague Castle softly lit; no location text',
+        biome: 'river_oldtown',
+        difficulty: 2,
+    },
+    {
+        id: 'singapore',
+        name: 'Singapore',
+        description:
+            'Futuristic skyline crowned by Marina Bay Sands and Supertree Grove, tropical greenery woven through spotless streets.',
+        lat: 1.283,
+        lng: 103.860,
+        imagePrompt:
+            'Realistic street-view at Marina Bay, Supertrees glowing, boat on bay, skyline mirrored in water; omit any text',
+        biome: 'tropical_metropolis',
+        difficulty: 2,
+    },
+    {
+        id: 'madrid',
+        name: 'Madrid, Spain',
+        description:
+            'Grand boulevards converging on Puerta del Sol, lively tapas bars spilling onto tiled plazas beneath royal palaces.',
+        lat: 40.416,
+        lng: -3.703,
+        imagePrompt:
+            'Realistic photo on Gran Vía, ornate facades, Metropolis dome, late afternoon sun, locals strolling; no identifying words',
+        biome: 'sunlit_city',
+        difficulty: 1,
+    },
+    {
+        id: 'mexicocity',
+        name: 'Mexico City, Mexico',
+        description:
+            'Vast high-altitude basin of colourful barrios, Zócalo cathedral towers and snow-capped volcanoes on distant horizons.',
+        lat: 19.433,
+        lng: -99.133,
+        imagePrompt:
+            'Realistic street-view on Paseo de la Reforma, Ángel de la Independencia, jacaranda trees in bloom; no location text',
+        biome: 'plateau_megacity',
+        difficulty: 2,
+    },
+    {
+        id: 'bangkok',
+        name: 'Bangkok, Thailand',
+        description:
+            'Neon-lit tuk-tuk streets flowing under gilded temple spires and looping sky-train tracks along the Chao Phraya.',
+        lat: 13.756,
+        lng: 100.501,
+        imagePrompt:
+            'Realistic night photo near Wat Arun across river, temple illuminated, boat lights on water, skyscrapers behind; no words in image',
+        biome: 'river_megacity',
+        difficulty: 2,
+    },
+    {
+        id: 'moscow',
+        name: 'Moscow, Russia',
+        description:
+            'Red Square’s onion-domed St. Basil’s flanked by the Kremlin walls and broad Soviet avenues.',
+        lat: 55.755,
+        lng: 37.617,
+        imagePrompt:
+            'Realistic photo at Red Square, Saint Basil’s colourful domes, cobblestones, winter dusk sky; no identifying text',
+        biome: 'historic_capital',
+        difficulty: 2,
+    },
+    {
+        id: 'buenosaires',
+        name: 'Buenos Aires, Argentina',
+        description:
+            'Parisian-meets-Latin boulevards, tango dancers in San Telmo and colourful Caminito houses along the Río de la Plata.',
+        lat: -34.603,
+        lng: -58.381,
+        imagePrompt:
+            'Realistic street-view in La Boca, brightly painted corrugated houses, tango couple, afternoon sun; no location text',
+        biome: 'port_city',
+        difficulty: 2,
+    },
+    {
+        id: 'beijing',
+        name: 'Beijing, China',
+        description:
+            'Forbidden City’s vermilion roofs stretching toward modern rings of glass towers under often-hazy skies.',
+        lat: 39.906,
+        lng: 116.391,
+        imagePrompt:
+            'Realistic photo outside Tiananmen gate, red walls, golden roofs, stone lions, soft haze; no identifying words',
+        biome: 'imperial_capital',
+        difficulty: 2,
     }
 
 
