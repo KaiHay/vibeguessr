@@ -75,9 +75,9 @@ export default function Guess({ markerPosition, setExpand, destination, guess, s
                             <div className="opacity-0">hi</div>
                         </div>
                         <div className="text-center ">
-                            {distance ? (<div className="flex flex-row w-full justify-evenly pt-1 items-center">
-                                <div className="p-1 bg-[#114412] font-black text-gr rounded-md translate-y-[1px]">
-                                    <div className={``}>You were {distance.toFixed(2)} miles away</div>
+                            {guess ? (<div className="flex flex-row w-full justify-evenly pt-1 items-center">
+                                <div className="p-1 bg-[#000000] font-black text-gr rounded-md translate-y-[1px]">
+                                    <div className={``}>You were {distance?distance.toFixed(2):'infinite'} miles away</div>
                                 </div>
                                 <div className="bg-black border border-black font-black rounded-md p-1 translate-y-[1px] transition-all hover:translate-x-1" >
                                     <button onClick={(() => nextClick())} className={`flex flex-row`}>
