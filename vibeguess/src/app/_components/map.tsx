@@ -53,7 +53,7 @@ export default function Map({ destination, placeID }: { destination: [[number, n
             <div className="">
                 <Image src={`/image-${placeID[currentRound]}.png`} alt="Generated" fill className='' />
             </div>
-            <ClientLeafletMap destination={destination[currentRound]!} setRound={setCurrentRound} setPoints={setTotalPoints} />
+            <ClientLeafletMap destination={destination[currentRound]!} setRound={setCurrentRound} setPoints={setTotalPoints} end={timeEnd} />
 
         </div>
     )
