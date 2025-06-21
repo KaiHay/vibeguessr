@@ -6,10 +6,12 @@ import Link from "next/link";
 
 
 
-export default function Guess({ markerPosition, destination, setGuess }:
+export default function Guess({ markerPosition, destination, setGuess, setRound, setTPoints }:
     {
         markerPosition: [number, number] | null; destination: [number, number];
-        setGuess: Dispatch<SetStateAction<boolean>>
+        setGuess: Dispatch<SetStateAction<boolean>>,
+        setRound: Dispatch<SetStateAction<number>>,
+        setTPoints: Dispatch<SetStateAction<number>>
     }) {
 
     const { data: session, status } = useSession()
@@ -25,6 +27,7 @@ export default function Guess({ markerPosition, destination, setGuess }:
         const [calc, dist] = pointCalc(markerPosition, destination)
         setDistance(dist)
         setPoints(calc)
+        setTPoints((prev) => prev + calc)
         setGuess((guess) => !guess)
         if (session?.user.id) {
             addPoints.mutate({ Id: session.user.id, addPoint: calc.toString() })
@@ -39,7 +42,14 @@ export default function Guess({ markerPosition, destination, setGuess }:
         const id = setTimeout(() => setReady(true), 500); // 50 ms delay
         return () => clearTimeout(id);
     }, [points]);
+    const nextClick = () => {
+        setRound((prev) => {
+            console.log('SETTING ROUND: ', prev);
+            return prev + 1
 
+        })
+
+    }
     if (!markerPosition) {
         return
     }
@@ -65,14 +75,15 @@ export default function Guess({ markerPosition, destination, setGuess }:
                                     <div className={``}>You were {distance.toFixed(2)} miles away</div>
                                 </div>
                                 <div className="bg-black border border-black font-black rounded-md p-1 translate-y-[1px] transition-all hover:translate-x-1" >
-                                    <div className={``}>
-                                        <Link href={'/game'} className="flex flex-row ">
-                                            <div>Next</div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                                    <button onClick={(() => nextClick())} className={``}>
+                                        {/* <Link href={'/game'} className="flex flex-row "></Link> */}
+                                        <div>Next</div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
 
-                                                <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                                            </svg>
-                                        </Link></div>
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                                        </svg>
+
+                                    </button>
                                 </div>
                             </div>)
                                 : ''}
